@@ -35,4 +35,11 @@ class Assets {
   static const String ic_3rd = 'assets/ic_3rd.png';
   static const String ic_points_3rd = 'assets/ic_points_3rd.png';
 
+  static const String ic_frame = 'assets/ic_frame.png';
+  static const String ic_cup = 'assets/ic_cup.png';
+  static const String ic_new_cup = 'assets/ic_new_cup.png';
+  static const String ic_base_spin = 'assets/ic_base_spin.png';
+  static const String ic_circular_spin = 'assets/ic_circular_spin.png';
+
+
 }

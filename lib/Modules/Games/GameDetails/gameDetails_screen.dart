@@ -3,20 +3,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:quizoo/Modules/Games/GameDetails/GameDetailsController.dart';
 import 'package:quizoo/Widgets/player_rank_widget.dart';
 import 'package:quizoo/generated/assets.dart';
 
 import '../../../Utilities/theme_helper.dart';
+import '../../../Widgets/top_rank_widget.dart';
 
 class GamedetailsScreen extends StatefulWidget {
   static const routeName = "/GamedetailsScreen";
   const GamedetailsScreen({super.key});
 
   @override
-  State<GamedetailsScreen> createState() => _GamedetailsScreenState();
+  _GamedetailsScreenState createState() => _GamedetailsScreenState();
 }
 
-class _GamedetailsScreenState extends State<GamedetailsScreen> {
+class _GamedetailsScreenState extends StateMVC<GamedetailsScreen> with TickerProviderStateMixin {
+  _GamedetailsScreenState() : super(GameDetailsController()) {
+    con = GameDetailsController();
+  }
+
+  late GameDetailsController con;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -162,7 +181,7 @@ class _GamedetailsScreenState extends State<GamedetailsScreen> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 40.0),
+                      padding: EdgeInsets.symmetric(horizontal: 30.0),
                       child: Container(
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -174,7 +193,8 @@ class _GamedetailsScreenState extends State<GamedetailsScreen> {
                                 children: [
                                   Image.asset(Assets.ic_2nd),
                                   Image.asset(Assets.ic_points_2nd),
-                                  Image.asset(Assets.ic_rank_2nd),
+                                  // Image.asset(Assets.ic_rank_2nd),
+                                  TopRankWidget(assetName: Assets.ic_rank_2nd, assetHeight: 120.0)
                                 ],
                               ),
                             ),
@@ -184,7 +204,8 @@ class _GamedetailsScreenState extends State<GamedetailsScreen> {
                                 children: [
                                   Image.asset(Assets.ic_1st),
                                   Image.asset(Assets.ic_points_1st),
-                                  Image.asset(Assets.ic_rank_1st),
+                                  // Image.asset(Assets.ic_rank_1st),
+                                  TopRankWidget(assetName: Assets.ic_rank_1st , assetHeight:  150.0),
                                 ],
                               ),
                             ),
@@ -194,7 +215,8 @@ class _GamedetailsScreenState extends State<GamedetailsScreen> {
                                 children: [
                                   Image.asset(Assets.ic_3rd),
                                   Image.asset(Assets.ic_points_3rd),
-                                  Image.asset(Assets.ic_rank_3rd),
+                                  // Image.asset(Assets.ic_rank_3rd),
+                                  TopRankWidget(assetName: Assets.ic_rank_3rd, assetHeight: 90.0)
                                 ],
                               ),
                             ),
